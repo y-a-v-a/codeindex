@@ -1,0 +1,13 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.result {
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+}
