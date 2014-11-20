@@ -2,5 +2,8 @@ extends layout
 
 block content
   h1= title
-  input(type='text', placeholder='query here' autofocus)
+  input(type='text', placeholder='query here', autofocus, name='query')
+  input(type='text', placeholder='path here', name='index')
+  input(type='button', value='go index')
+  p(class='message')
   div(class='results')

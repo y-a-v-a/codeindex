@@ -6,8 +6,12 @@ a {
   color: #00B7FF;
 }
 
-.result {
+.result pre {
     max-height: 200px;
     overflow-y: scroll;
     margin-bottom: 30px;
+}
+
+.message {
+    display: none;
 }
