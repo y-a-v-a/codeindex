@@ -2,13 +2,28 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.main {
+    margin: 0 auto;
+    width: 800px;
+}
+
 a {
   color: #00B7FF;
 }
 
+.results {
+    margin-bottom: 120px;
+}
+
+.language-javascript {
+    border-radius: 3px;
+}
+
+.result {
+    margin-top: 40px;
+}
+
 .result pre {
-    max-height: 200px;
-    overflow-y: scroll;
     margin-bottom: 30px;
 }
 
