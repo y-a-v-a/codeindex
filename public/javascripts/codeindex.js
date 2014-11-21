@@ -20,14 +20,14 @@ $(function() {
                         var path = $('<div/>').text(pathFromDocs(key, docs));
                         var code = [];
                         for (var k = 0; k < data[key].content_t.length; k++) {
-                            code.push($('<pre/>').append($('<code/>', {'class': 'language-javascript'}).text(data[key].content_t[k])));
+                            code.push($('<pre/>', {'class': 'language-javascript'}).append($('<code/>', {'class': 'language-javascript'}).html(data[key].content_t[k])));
                         }
                         result.append(path);
                         result.append(code);
                         results.append(result);
-                    } ;//);
+                    };
                 }).always(function() {
-                    Prism.highlightAll();
+                    // Prism.highlightAll();
                 });
             } else {
                 $('.result').empty();
