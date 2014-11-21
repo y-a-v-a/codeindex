@@ -7,15 +7,25 @@ $(function() {
                 $.getJSON('/query/' + val)
                 .done(function(resp) {
                     var results = $('.results').empty();
-                    var data = resp;
-                    data.forEach(function(el) {
+                    var data = resp.highlighting;
+                    var docs = resp.response.docs;
+                    var keys = Object.keys(data);
+                    var key;
+                    for (var l = 0; l < keys.length; l++) {
+                        key = keys[l];
+                        if(!data[key].content_t) {
+                            continue;
+                        }
                         var result = $('<div/>', {'class': 'result'});
-                        var path = $('<div/>').text(el.path_t);
-                        var code = $('<pre/>').append($('<code/>', {'class': 'language-javascript'}).text(el.content_t));
+                        var path = $('<div/>').text(pathFromDocs(key, docs));
+                        var code = [];
+                        for (var k = 0; k < data[key].content_t.length; k++) {
+                            code.push($('<pre/>').append($('<code/>', {'class': 'language-javascript'}).text(data[key].content_t[k])));
+                        }
                         result.append(path);
                         result.append(code);
                         results.append(result);
-                    });
+                    } ;//);
                 }).always(function() {
                     Prism.highlightAll();
                 });
@@ -53,6 +63,15 @@ $(function() {
         setTimeout(function() {
             $('.message').fadeOut();
         }, 5000);
+    }
+    
+    function pathFromDocs(key, docs) {
+        for (var i = 0; i < docs.length; i++) {
+            if (docs[i].id === key) {
+                return docs[i].path_t;
+            }
+        }
+        return null;
     }
 });
 
