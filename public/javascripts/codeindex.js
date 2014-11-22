@@ -4,7 +4,7 @@ $(function() {
         delay(function() {
             var val = $('input').val();
             if (val.length >= 3) {
-                $.getJSON('/query/' + val)
+                $.getJSON('/query/' + encodeURIComponent(val))
                 .done(function(resp) {
                     var results = $('.results').empty();
                     var data = resp.highlighting;
