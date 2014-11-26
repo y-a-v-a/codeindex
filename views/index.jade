@@ -2,8 +2,13 @@ extends layout
 
 block content
   h1= title
-  input(type='text', placeholder='query here', autofocus, name='query')
-  input(type='text', placeholder='path here', name='index')
-  input(type='button', value='go index')
-  p(class='message')
+  input(type='text', placeholder='query here', autofocus, name='query' ng-model='text' ng-change='fetch()' ng-minlength='3')
+  input(type='text', placeholder='path here', name='index' ng-model='path')
+  input(type='button', value='go index' ng-click='doindex()')
+  p(class='message' ng-show='message') {{message}}
   div(class='results')
+    div(ng-repeat='highlight in highlighting')
+      div {{highlight.path_t}}
+      div(ng-repeat='content in highlight.content_t')
+        pre(class='language-javascript')
+          code(class='language-javascript' ng-bind-html='content | sanitize')
