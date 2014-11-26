@@ -1,3 +1,4 @@
+// deprecated jquery stuff. Now use Angular
 $(function() {
     var i = $('input[name="query"]');
     i.on('keyup', function() {
