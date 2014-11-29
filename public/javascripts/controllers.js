@@ -5,7 +5,7 @@ codeIndexApp.controller('CodeIndexCtrl', ['$scope', '$http', function($scope, $h
     $scope.fetch = function() {
         $http.get('/query/' + encodeURIComponent($scope.text))
         .success(function(data) {
-            $scope.highlighting = (postProcess(data)).highlighting;
+            $scope.docs = (postProcess(data)).response.docs;
         });
     }
 
@@ -35,7 +35,8 @@ function postProcess(data) {
         for(var i = 0; i < data.response.docs.length; i++) {
             key = data.response.docs[i].id;
             if (typeof data.highlighting[key] !== 'undefined') {
-                data.highlighting[key].path_t = data.response.docs[i].path_t;
+                // data.highlighting[key].path_t = data.response.docs[i].path_t;
+                data.response.docs[i].highlighting = data.highlighting[key];
             }
         }
     }

@@ -7,8 +7,9 @@ block content
   input(type='button', value='go index' ng-click='doindex()')
   p(class='message' ng-show='message') {{message}}
   div(class='results')
-    div(ng-repeat='highlight in highlighting')
-      div {{highlight.path_t}}
-      div(ng-repeat='content in highlight.content_t')
-        pre(class='language-javascript')
-          code(class='language-javascript' ng-bind-html='content | sanitize')
+    div(ng-repeat='doc in docs')
+      div(ng-repeat='highlight in doc.highlighting')
+        div {{doc.path_t}}
+        div(ng-repeat='content in highlight')
+          pre(class='language-javascript')
+            code(class='language-javascript' ng-bind-html='content | sanitize')
